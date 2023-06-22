@@ -1,3 +1,3 @@
 const contactCtrl = require("./contacts/contacts");
 
-module.exports = contactCtrl
+module.exports = contactCtrl;
