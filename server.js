@@ -1,17 +1,21 @@
-const app = require('./app')
-const connectDB = require('./connections');
-require('dotenv').config();
-const HOST = process.env.DB_HOST;
+const app = require("./app");
+const mongoose = require ("mongoose")
+require("dotenv").config();
 
-connectDB.mongoose
-  .connect(HOST)
+
+mongoose
+  .connect(process.env.DB_HOST)
   .then(() => {
-    app.listen(3000, () => {
-      console.log("Server running. Use our API on port: 3000DB");
+    app.listen(process.env.PORT, () => {
+      console.log(`Server running. Use our API on port: ${process.env.PORT}`);
     });
   })
   .catch((error) => {
     console.log(error.message);
     process.exit(1);
-  });
-
+  },{
+  promiseLibrary: global.Promise,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
