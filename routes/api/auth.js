@@ -10,5 +10,5 @@ router.post(
   validateBody(schemas.signUpSchema),
   userCtrl.registration
 );
-
+router.post("/signin",validateBody(schemas.signInSchema),userCtrl.login)
 module.exports = router;
